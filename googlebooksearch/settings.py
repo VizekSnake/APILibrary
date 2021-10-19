@@ -137,9 +137,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_ROOT = 'googlebooksearch/static'  # Important for Heroku
 STATIC_URL = '/static/'
 
-# STATICFILES_DIRS = (
-#     path.join(BASE_DIR, 'static'),  # Important for Heroku
-# )
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),  # Important for Heroku
+)
 
 django_heroku.settings(locals())
 
