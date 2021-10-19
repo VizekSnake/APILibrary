@@ -1,9 +1,9 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import View
 from googlebooksearch_app.models import Book
-from googlebooksearch_app.forms import BooksSearchForm, BookAddForm, SearchBookForm
+from googlebooksearch_app.forms import BooksSearchForm, BookAddForm, SearchBookForm, BookUpdateForm
 from django.contrib import messages
 from datetime import datetime
 from django.core.paginator import Paginator
@@ -160,3 +160,23 @@ class BookListView(generics.ListCreateAPIView):
 class BookView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
+
+
+class BookUpdateView(View):
+    """  View to change details of Book  """
+
+    def get(self, request, book_id):
+        book_view = Book.objects.get(pk=book_id)
+        book = get_object_or_404(Book, id=book_id)
+        book_form = BookUpdateForm(instance=book)
+        return render(request, 'book_update_view.html',
+                      context={'book_form': book_form, 'book_view': book_view})
+
+    def post(self, request, *args, **kwargs):
+        book_id = request.POST.get('book_id')
+        book = get_object_or_404(Book, id=book_id)
+        book_form = BookUpdateForm(request.POST, instance=book)
+        if book_form.is_valid():
+            book_form.save()
+            messages.success(request, f'Your Book has been updated!')
+            return redirect('home')

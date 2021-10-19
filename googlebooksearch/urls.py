@@ -18,13 +18,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import path
-from googlebooksearch_app.views import HomeView, BookAddView, GoogleBooks, BookListView, BookView
+from googlebooksearch_app.views import HomeView, BookAddView, GoogleBooks, BookListView, BookView, BookUpdateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomeView.as_view(), name="home"),
     # path('api/', BookGoogleApi.as_view(), name="api"),
     path('add/', BookAddView.as_view(), name="bookadd"),
+    path('add/<slug:book_id>', BookUpdateView.as_view(), name="book_update"),
     path('googlebooks/', GoogleBooks.as_view(), name="import_books"),
     path('books/', BookListView.as_view(), name='google_books'),
     path('books/<int:pk>/', BookView.as_view()),

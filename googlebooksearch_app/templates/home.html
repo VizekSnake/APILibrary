@@ -9,10 +9,10 @@
             <p>Year of publication from :
                 <input type="number" name="datepicker1" min="0" max="3000" class="numberinput form-control"
                        id="datepicker1" width="30%">
-                <hr>
+            <hr>
             Year of publication to :
-                <input type="number" name="datepicker2" min="0" max="3000" class="numberinput form-control"
-                       id="datepicker2" width="30%">
+            <input type="number" name="datepicker2" min="0" max="3000" class="numberinput form-control"
+                   id="datepicker2" width="30%">
             </p>
 
         </fieldset>
@@ -35,7 +35,7 @@
                     </p>
                     <p class="text-secondary">Language: {{ book.language }}
                     </p>
-
+                    <a href="/book/update/{{ book.id }}" class="btn btn-outline-info ml-1 float-right" type="submit">Details</a>
                 </div>
             </div>
         </div>

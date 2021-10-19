@@ -24,3 +24,13 @@ class BookAddForm(forms.ModelForm):
 
 class SearchBookForm(forms.Form):
     q = forms.CharField(label_suffix='Book info to find in Google library')
+
+
+class BookUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Book
+        fields = '__all__'
+
+    widgets = {
+        'publication_date': NumberInput(attrs={'min': 1, 'max': '4', 'type': 'number'}),
+    }

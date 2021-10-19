@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+        <div class="content-section">
+            <div class="media">
+                <img class="tool-img" src="{{ book_view.cover }}" alt="book_cover {{ book_view.title }}">
+                <div class="media-body">
+                    <h4 class="text-secondary"> Title: {{ book_view.title }}</h4>
+                    <p class="text-secondary">Author: {{ book_view.author }}</p>
+                    <p class="text-secondary">Language: {{ book_view.language }} </p>
+                    <p class="text-secondary">Pages: {{ book_view.pages_nr }} </p>
+                    <p class="text-secondary">Pages: {{ book_view.isbn }} </p>
+                    <p class="text-secondary">Pages: {{ book_view.publication_date }} </p>
+                </div>
+            </div>
+        </div>
+        <hr>
+    <div class="content-section">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Book Update_form</legend>
+            {{ book_form|crispy }}
+            <input type="hidden" name="book_id" value="{{ book_view.id }}" >
+        </fieldset>
+{#        {{ my_tool_view.id }}#}
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Update</button>
+        </div>
+    </form>
+    </div>
+    <a class="btn btn-outline-primary" href="{{request.META.HTTP_REFERER|escape}}">Back</a>
+{% endblock content %}
