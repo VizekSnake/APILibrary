@@ -27,7 +27,7 @@ urlpatterns = [
     path('add/<int:book_id>', BookUpdateView.as_view()),
     path('googlebooks/', GoogleBooks.as_view(), name="import_books"),
     path('books/', BookListView.as_view(), name='google_books'),
-    path('books/update/<int:pk>/', BookView.as_view()),
+    path('book/update/<int:pk>/', BookView.as_view()),
 
 ]
 if settings.DEBUG:
