@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% load static %}
+    {% load crispy_forms_tags %}
+    <div class="content-section">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Add Your Book!</legend>
+<div id="div_id_title" class="form-group"> <label for="id_title" class="">
+                Title
+            </label> <div class=""> <input type="text" name="title" maxlength="100" class="textinput textInput form-control" id="id_title" placeholder="{{ google_title }}"> </div> </div> <div id="div_id_author" class="form-group"> <label for="id_author" class="">
+                Author
+            </label> <div class=""> <input type="text" name="author" maxlength="100" class="textinput textInput form-control" id="id_author" placeholder="{{ google_author }}"> </div> </div> <div id="div_id_publication_date" class="form-group"> <label for="id_publication_date" class="">
+                Publication date
+            </label> <div class=""> <input type="number" name="publication_date" min="0" max="3000" class="numberinput form-control" id="id_publication_date" placeholder="{{ google_publication_date }}"> </div> </div> <div id="div_id_language" class="form-group"> <label for="id_language" class="">
+                Language
+            </label> <div class=""> <input type="text" name="language" maxlength="100" class="textinput textInput form-control" id="id_language" placeholder="{{ google_language }}"> </div> </div> <div id="div_id_isbn" class="form-group"> <label for="id_isbn" class="">
+                Isbn
+            </label> <div class=""> <input type="text" name="isbn" maxlength="100" class="textinput textInput form-control" id="id_isbn" placeholder="{{ google_isbn }}"> </div> </div> <div id="div_id_cover" class="form-group"> <label for="id_cover" class="">
+                Cover
+            </label> <div class=""> <input type="text" name="cover" maxlength="100" class="textinput textInput form-control" id="id_cover" placeholder="{{ google_image }}"> </div> </div> <div id="div_id_pages_nr" class="form-group"> <label for="id_pages_nr" class="">
+                Pages nr
+            </label> <div class=""> <input type="number" name="pages_nr" class="numberinput form-control" id="id_pages_nr" placeholder="{{ google_pages }}"> </div> </div>
+
+            </fieldset>
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info ml-1" type="submit">Add</button> <a class="btn btn-outline-primary" href="/">Back</a>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

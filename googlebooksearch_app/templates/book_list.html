@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content%}
+  {% for book in books %}
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <ul class="list-group shadow">
+          <li class="list-group-item">
+            <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+              <div class="media-body order-2 order-lg-1">
+                <h5 class="mt-0 font-weight-bold mb-2">{{ book.title }}</h5>
+                <p class="font-italic text-muted mb-0 small">{{ book.subtitle }}</p>
+                {% for identifier in book.industryIdentifiers %}
+                  <p class="font-italic text-muted mb-0 small">{{ identifier.type }} : {{ identifier.identifier }}</p>
+                {% endfor  %}
+                <p class="font-italic text-muted mb-0 small">Language: {{ book.language }}</p>
+                <p class="font-italic text-muted mb-0 small">Published date: {{ book.publishedDate }}</p>
+                <div class="media-body order-2 order-lg-1">
+                {% if book.authors %}
+                <h6 class="font-weight-bold my-2">Authors:</h6>
+                {% for author in book.authors %}
+                  <p class="font-italic text-muted mb-0 small">{{ author }}</p>
+                {% endfor %}
+                {% endif %}
+                </div>
+                {% if book.pageCount %}
+                <div class="d-flex align-items-center justify-content-between mt-1">
+                  <h6 class="font-weight-bold my-2">Number of pages: {{book.pageCount}}</h6>
+                </div>
+                {% endif %}
+              </div>
+              {% if book.imageLinks %}
+                <img class="thumbnail" src="{{book.imageLinks.thumbnail}}" alt="">
+              {% else %}
+                <img class="thumbnail2" src="{% static 'images/placeholder4.png'%}" alt="">
+              {% endif %}
+            </div>
+            <form action="." method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-primary">ADD THIS BOOK TO YOUR BOOKSHELF</button>
+            </form>
+          </li>
+        </ul>
+      </div>
+    </div>
+  {% endfor %}
+{% endblock content %}

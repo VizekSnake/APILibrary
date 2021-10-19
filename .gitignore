@@ -1,0 +1,17 @@
+.DS_Store
+.vscode
+tweet_env
+desktop.ini
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+media
+.env
+.idea
+.idea/.
+/venv
+__pycache__
+googlebooksearch/static/

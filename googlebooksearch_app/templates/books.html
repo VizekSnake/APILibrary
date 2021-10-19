@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% load static %}
+    {% if books %}
+        {% for book in books %}
+            <div class="content-section">
+                <div class="media">
+                    <img class="tool-img" src="{{ book.image }}">
+                    <div class="media-body">
+                        <h5 class="text-secondary">{{ book.title }}</h5>
+                        <p class="text-secondary"> {{ book.authors }}</p>
+                        <p class="text-secondary">Pages: {{ book.pages }}</p>
+                        <p class="text-secondary">ISBN: {{ book.isbn }}
+                        </p>
+                        <p class="text-secondary">Language: {{ book.language }}
+                        </p>
+                        <p class="text-secondary">Published_date: {{ book.published_date }}
+                        </p>
+                        <a href='/add' class ="btn btn-outline-primary ml-3">Add!</a>
+
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
+
+
