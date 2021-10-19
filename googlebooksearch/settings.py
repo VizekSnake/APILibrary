@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'googlebooksearch.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 import dj_database_url
-DATABASES = {'default': dj_database_url.config(default="postgres://apiikadgdagvst:417973bfe0ed37b582ee835614ca65096251f584420214a732ef0db76dac3f9f@ec2-52-211-158-144.eu-west-1.compute.amazonaws.com:5432/d9d9frh64cffk1")}
+DATABASES = {'default': dj_database_url.config(default="postgres://fvkcsicvffvdbi:065ce81cca775cdd32f0b963d3b51a32b8bfffc16fd173412b5fc0315b40a735@ec2-34-250-19-18.eu-west-1.compute.amazonaws.com:5432/d26eijepefo6em")}
 
 # DATABASES = {
 #     'default': {
