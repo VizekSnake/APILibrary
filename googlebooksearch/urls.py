@@ -23,9 +23,8 @@ from googlebooksearch_app.views import HomeView, BookAddView, GoogleBooks, BookL
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomeView.as_view(), name="home"),
-    # path('api/', BookGoogleApi.as_view(), name="api"),
     path('add/', BookAddView.as_view(), name="bookadd"),
-    path('add/<slug:book_id>', BookUpdateView.as_view(), name="book_update"),
+    path('add/<int:book_id>', BookUpdateView.as_view()),
     path('googlebooks/', GoogleBooks.as_view(), name="import_books"),
     path('books/', BookListView.as_view(), name='google_books'),
     path('books/<int:pk>/', BookView.as_view()),
